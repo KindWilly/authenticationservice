@@ -1,8 +1,6 @@
 ﻿using IdentityModel;
 using IdentityServer4.Models;
-using IdentityServer4.Test;
 using System.Collections.Generic;
-using System.Security.Claims;
 
 namespace AuthenticationService.Web
 {
@@ -13,7 +11,6 @@ namespace AuthenticationService.Web
 			{
 				new IdentityResources.OpenId(),
 				new IdentityResources.Profile(),
-				new IdentityResources.Email(),
 				new IdentityResource
 				{
 					Name = "role",
@@ -22,13 +19,22 @@ namespace AuthenticationService.Web
 			};
 
 		public static IEnumerable<ApiResource> GetApiResources() =>
-			new []
+			new[]
 			{
 				new ApiResource
 				{
 					Name = "ApiOne",
 					DisplayName = "ApiOne #1",
-					Description = "Allow the application to access API #1 on your behalf",
+					Description = "Allow the application to access ApiOne #1 on your behalf",
+					Scopes = new List<string> { "ApiOne" },
+					ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
+					UserClaims = new List<string> {"role"}
+				},
+				new ApiResource
+				{
+					Name = "ApiTwo",
+					DisplayName = "ApiTwo #1",
+					Description = "Allow the application to access ApiTwo #1 on your behalf",
 					Scopes = new List<string> { "ApiOne" },
 					ApiSecrets = new List<Secret> {new Secret("ScopeSecret".Sha256())},
 					UserClaims = new List<string> {"role"}
@@ -38,7 +44,9 @@ namespace AuthenticationService.Web
 		public static IEnumerable<ApiScope> GetApiScopes() =>
 			new[]
 			{
-				new ApiScope("ApiOne")
+				new ApiScope("ApiOne"),
+				new ApiScope("ApiTwo")
+
 			};
 
 		public static IEnumerable<Client> GetClients() =>
@@ -50,22 +58,15 @@ namespace AuthenticationService.Web
 					ClientSecrets = { new Secret("SuperSecretPassword".ToSha256()) },
 					AllowedGrantTypes = GrantTypes.ClientCredentials,
 					AllowedScopes = { "ApiOne" }
+				},
+				new Client
+				{
+					ClientId = "client_id_mvc",
+					ClientSecrets = { new Secret("client_secret_mvc".ToSha256()) },
+					AllowedGrantTypes = GrantTypes.Code,
+					RedirectUris = { "https://localhost:44379/signin-oidc" },
+					AllowedScopes = { "ApiOne", "ApiTwo", "openid", "profile" }
 				}
 			};
-
-		public static List<TestUser> Get()
-		{
-			return new List<TestUser> {
-			new TestUser {
-				SubjectId = "5BE86359-073C-434B-AD2D-A3932222DABE",
-				Username = "scott",
-				Password = "password",
-				Claims = new List<Claim> {
-					new Claim(JwtClaimTypes.Email, "scott@scottbrady91.com"),
-					new Claim(JwtClaimTypes.Role, "admin")
-				}
-			}
-		};
-		}
 	}
 }

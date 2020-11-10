@@ -14,7 +14,7 @@ namespace ApiTwo.Controllers
 			_clientFactory = clientFactory;
 		}
 
-		[Route("/")]
+		[Route("/home")]
 		public async Task<IActionResult> Index()
 		{
 			var client = _clientFactory.CreateClient();
@@ -29,7 +29,6 @@ namespace ApiTwo.Controllers
 				GrantType = "client_credentials"
 			});
 
-
 			var apiClient = _clientFactory.CreateClient();
 
 			apiClient.SetBearerToken(token.AccessToken);
@@ -39,7 +38,8 @@ namespace ApiTwo.Controllers
 			return Ok(new 
 			{ 
 				access_token = token.AccessToken,
-			message = content});
+				message = content
+			});
 		}
 	}
 }

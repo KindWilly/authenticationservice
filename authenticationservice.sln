@@ -5,11 +5,13 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Outer Layer", "1. Outer Layer", "{FA61E7F7-C3D4-4E4A-807F-318FEB3995C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiOne", "ApiOne\ApiOne.csproj", "{406422DE-374D-4241-BEB2-AE599635E85E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiOne", "ApiOne\ApiOne.csproj", "{406422DE-374D-4241-BEB2-AE599635E85E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiTwo", "ApiTwo\ApiTwo.csproj", "{B9AD0A0E-FE36-4A6F-858B-0CA286A99846}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiTwo", "ApiTwo\ApiTwo.csproj", "{B9AD0A0E-FE36-4A6F-858B-0CA286A99846}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthenticationService.Web", "AuthenticationService.Web\AuthenticationService.Web.csproj", "{8BB60A3F-739C-4FA6-9D25-0B6126349B80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthenticationService.Web", "AuthenticationService.Web\AuthenticationService.Web.csproj", "{8BB60A3F-739C-4FA6-9D25-0B6126349B80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcClient", "MvcClient\MvcClient.csproj", "{CF9CE89F-741E-4F1B-B950-ED5F0DFC564A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{8BB60A3F-739C-4FA6-9D25-0B6126349B80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BB60A3F-739C-4FA6-9D25-0B6126349B80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8BB60A3F-739C-4FA6-9D25-0B6126349B80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF9CE89F-741E-4F1B-B950-ED5F0DFC564A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9CE89F-741E-4F1B-B950-ED5F0DFC564A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9CE89F-741E-4F1B-B950-ED5F0DFC564A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9CE89F-741E-4F1B-B950-ED5F0DFC564A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{406422DE-374D-4241-BEB2-AE599635E85E} = {FA61E7F7-C3D4-4E4A-807F-318FEB3995C7}
 		{B9AD0A0E-FE36-4A6F-858B-0CA286A99846} = {FA61E7F7-C3D4-4E4A-807F-318FEB3995C7}
 		{8BB60A3F-739C-4FA6-9D25-0B6126349B80} = {FA61E7F7-C3D4-4E4A-807F-318FEB3995C7}
+		{CF9CE89F-741E-4F1B-B950-ED5F0DFC564A} = {FA61E7F7-C3D4-4E4A-807F-318FEB3995C7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3EE55B8B-1F3B-4B6A-852C-E78DDDCFA876}

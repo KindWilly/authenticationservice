@@ -3,25 +3,27 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace ApiTwo
+namespace MvcClient
 {
 	public class Startup
 	{
-		// This method gets called by the runtime. Use this method to add services to the container.
-		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services
-				.AddAuthentication("Bearer")
-				.AddJwtBearer("Bearer", options =>
+			services.AddAuthentication(option =>
+			{
+				option.DefaultScheme = "Cookie";
+				option.DefaultChallengeScheme = "oidc";
+			})
+				.AddCookie("Cookie")
+				.AddOpenIdConnect("oidc", options =>
 				{
 					options.Authority = "https://localhost:44356/";
-					options.Audience = "ApiTwo";
-					options.RequireHttpsMetadata = false;
+					options.ClientId = "client_id_mvc";
+					options.ClientSecret = "client_secret_mvc";
+					options.SaveTokens = true;
+					options.ResponseType = "code";
 				});
-
-			services.AddHttpClient();
-			services.AddControllers();
+			services.AddControllersWithViews();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -33,11 +35,12 @@ namespace ApiTwo
 
 			app.UseRouting();
 
-			app.UseAuthentication().UseAuthorization();
+			app.UseAuthentication()
+				.UseAuthorization();
 
 			app.UseEndpoints(endpoints =>
 			{
-				endpoints.MapControllers();
+				endpoints.MapDefaultControllerRoute();
 			});
 		}
 	}
