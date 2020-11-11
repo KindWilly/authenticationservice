@@ -16,4 +16,3 @@ namespace AuthenticationService.Web.Controllers
         public string ReturnUrl { get; set; }
     }
 }
- 

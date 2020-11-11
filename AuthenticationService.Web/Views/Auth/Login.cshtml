@@ -1,25 +1,18 @@
-﻿@model AuthenticationService.Web.Controllers.RegisterViewModel;
+﻿
+@model AuthenticationService.Web.Controllers.LoginViewModel;
 
-<form asp-controller="Auth" asp-action="Register" method="post">
+<form asp-controller="Auth" asp-action="Login" method="post">
     <input type="hidden" asp-for="ReturnUrl" />
     <div>
         <label>UserName</label>
-        <input asp-for="Username" />
-        <span asp-validation-for="Username"></span>
+        <input asp-for="UserName" />
     </div>
     <div>
         <label>Password</label>
         <input asp-for="Password" />
-        <span asp-validation-for="Password"></span>
     </div>
     <div>
-        <label>Confirm Password</label>
-        <input asp-for="ConfirmPassword" />
-        <span asp-validation-for="ConfirmPassword"></span>
-
-    </div>
-    <div>
-        <button type="submit">Sign Up</button>
+        <button type="submit">Sign In</button>
     </div>
 </form>
 <div>

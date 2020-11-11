@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
-
-namespace AuthenticationService.Web.Controllers
+﻿namespace AuthenticationService.Web.Controllers
 {
     public class LoginViewModel
     {

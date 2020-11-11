@@ -13,7 +13,7 @@ namespace AuthenticationService.Web
             using (var scope = host.Services.CreateScope())
             {
                 var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-                var user = new IdentityUser("bob");
+                var user = new IdentityUser("user");
                 userManager.CreateAsync(user, "password").GetAwaiter().GetResult();
 
             }

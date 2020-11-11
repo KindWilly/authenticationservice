@@ -34,15 +34,15 @@ namespace AuthenticationService.Web.Controllers
            View(new RegisterViewModel { ReturnUrl = returnUrl });
 
         [HttpPost]
-        public async Task<IActionResult> Register(LoginViewModel model)
+        public async Task<IActionResult> Register(RegisterViewModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            var user = new IdentityUser(model.UserName);
-            var result = await _userManager.AddPasswordAsync(user, model.Password);
+            var user = new IdentityUser(model.Username);
+            var result = await _userManager.CreateAsync(user, model.Password);
 
             if (!result.Succeeded)
                 return View();
