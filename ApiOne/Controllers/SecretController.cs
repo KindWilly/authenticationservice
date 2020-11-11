@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ApiOne.Controllers
 {
-	public class SecretController : ControllerBase
-	{
-		[Route("/secret"), Authorize]
-		public string Index() => "Secret message from Api one";
-	}
+    public class SecretController : ControllerBase
+    {
+        [Route("/secret"), Authorize]
+        public string Index() => "Secret message from Api one";
+    }
 }
